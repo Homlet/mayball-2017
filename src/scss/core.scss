@@ -1,0 +1,30 @@
+@import 'jeet/index';
+@import 'partials/colors';
+@import 'partials/fonts';
+@import 'partials/mixins';
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $color-night-sky;
+  color: $color-light-text;
+  font-family: $font-body;
+}
+
+h1 {
+  font-family: $font-header;
+  margin: 0;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+
+  &:active {
+    color: $color-link-active;
+  }
+}
