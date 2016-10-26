@@ -12,8 +12,6 @@
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-focus": "^1.0.0",
-    "grunt-shell": "^2.0.0",
-    "scrollmagic": "^2.0.0",
-    "slicknav": "^1.0.0"
+    "grunt-shell": "^2.0.0"
   }
 }
