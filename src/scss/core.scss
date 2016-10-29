@@ -1,8 +1,14 @@
+// Libraries:
 @import 'jeet/index';
+
+// Partials:
 @import 'partials/colors';
 @import 'partials/fonts';
+@import 'partials/media';
 @import 'partials/mixins';
 
+// Includes:
+@import 'includes/header';
 
 html,
 body {
@@ -15,11 +21,6 @@ body {
   font-family: $font-body;
 }
 
-h1 {
-  font-family: $font-header;
-  margin: 0;
-}
-
 a {
   color: $color-link;
   text-decoration: none;
@@ -27,4 +28,8 @@ a {
   &:active {
     color: $color-link-active;
   }
+}
+
+.container {
+  @include center(800px);
 }

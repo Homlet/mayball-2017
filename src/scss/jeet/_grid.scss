@@ -1,15 +1,7 @@
-/**
- * Style an element as a column with a gutter.
- * @param {number} [$ratios=1] - A width relative to its container as a fraction.
- * @param {number} [$offset=0] - A offset specified as a fraction (see $ratios).
- * @param {number} [$cycle=0] - Easily create an nth column grid where $cycle equals the number of columns.
- * @param {number} [$uncycle=0] - Undo a previous cycle value to allow for a new one.
- * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
- */
-@mixin column($ratios: 1, $offset: 0, $cycle: 0, $uncycle: 0, $gutter: $jeet-gutter) {
-  $side: jeet-get-layout-direction();
-  $opposite-side: jeet-opposite-direction($side);
-  $column-widths: jeet-get-column($ratios, $gutter);
+@mixin column($ratios: 1, $offset: 0, $cycle: 0, $gutter: map-get($jeet, 'gutter')) {
+  $side: _get-layout-direction();
+  $opposite-side: _opposite-direction($side);
+  $column-widths: _get-column($ratios, $gutter);
   $margin-last: 0;
   $margin-l: $margin-last;
   $margin-r: nth($column-widths, 2);
@@ -17,16 +9,17 @@
   @if $offset != 0 {
     @if $offset < 0 {
       $offset: $offset * -1;
-      $offset: nth(jeet-get-column($offset, nth($column-widths, 2)), 1);
+      $offset: nth(_get-column($offset, nth($column-widths, 2)), 1);
       $margin-last: $offset + nth($column-widths, 2) * 2;
       $margin-r: $margin-last;
     } @else {
-      $offset: nth(jeet-get-column($offset, nth($column-widths, 2)), 1);
+      $offset: nth(_get-column($offset, nth($column-widths, 2)), 1);
       $margin-l: $offset + nth($column-widths, 2);
     }
   }
 
-  @include cf;
+  @include clearfix;
+
   float: $side;
   clear: none;
   text-align: inherit;
@@ -36,116 +29,75 @@
     #{$opposite-side}: $margin-r * 1%;
   };
 
-  @if $uncycle != 0 {
-    &:nth-child(#{$uncycle}n) {
-      margin-#{jeet-opposite-direction($side)}: $margin-r * 1%;
+  @if $cycle != 0 {
+    &:nth-child(n) {
+      margin-#{_opposite-direction($side)}: $margin-r * 1%;
       float: $side;
-    }
-    &:nth-child(#{$uncycle}n + 1) {
       clear: none;
     }
-  }
 
-  @if $cycle != 0 {
     &:nth-child(#{$cycle}n) {
-      margin-#{jeet-opposite-direction($side)}: $margin-last * 1%;
-      float: jeet-opposite-direction($side);
+      margin-#{_opposite-direction($side)}: $margin-last * 1%;
+      float: _opposite-direction($side);
     }
+
     &:nth-child(#{$cycle}n + 1) {
       clear: both;
     }
   } @else {
     &:last-child {
-      margin-#{jeet-opposite-direction($side)}: $margin-last * 1%;
+      margin-#{_opposite-direction($side)}: $margin-last * 1%;
     }
   }
 }
 
-/**
- * An alias for the column mixin.
- * @param [$args...] - All arguments get passed through to column().
- */
-@mixin col($args...) {
-  @include column($args...);
-}
 
-/**
- * Get the width of a column and nothing else.
- * @param {number} [$ratios=1] - A width relative to its container as a fraction.
- * @param {number} [$g=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
- */
-@function column-width($ratios: 1, $g: $jeet-gutter) {
-  @if ($jeet-parent-first != 'true') {
-    $ratios: jeet-reverse($ratios);
+@function column-width($ratios: 1, $gutter: map-get($jeet, 'gutter')) {
+  @if (map-get($jeet, 'parent-first') != 'true') {
+    $ratios: _reverse($ratios);
   }
 
   $w: 100;
 
   @each $ratio in $ratios {
-    $w: 100 * $ratio - $g + $ratio * $g;
+    $w: 100 * $ratio - $gutter + $ratio * $gutter;
   }
 
   @return unquote($w + '%');
 }
 
-/**
- * Get the gutter size of a column and nothing else.
- * @param {number} [ratios=1] - A width relative to its container as a fraction.
- * @param {number} [g=jeet.gutter] - Specify the gutter width as a percentage of the containers width.
- */
-@function column-gutter($ratios: 1, $g: $jeet-gutter) {
-  @if ($jeet-parent-first != 'true') {
-    $ratios: jeet-reverse($ratios);
+
+@function column-gutter($ratios: 1, $gutter: map-get($jeet, 'gutter')) {
+  @if (map-get($jeet, 'parent-first') != 'true') {
+    $ratios: _reverse($ratios);
   }
 
   $w: 100;
 
   @each $ratio in $ratios {
-    $g: $g / $w * 100;
+    $gutter: $gutter / $w * 100;
   }
 
-  @return unquote($g + '%');
+  @return unquote($gutter + '%');
 }
 
-/**
- * An alias for the column-width function.
- * @param [$args...] - All arguments get passed through to column().
- */
-@function cw($args...) {
-  @return column-width($args...);
-}
 
-/**
- * An alias for the column-gutter function.
- * @param [$args...] - All arguments get passed through to column().
- */
-@function cg($args...) {
-  @return column-gutter($args...);
-}
-
-/**
- * Style an element as a column without any gutters for a seamless row.
- * @param {number} [$ratios=1] - A width relative to its container as a fraction.
- * @param {number} [$offset=0] - A offset specified as a fraction (see $ratios).
- * @param {number} [cycle=0] - Easily create an nth column grid where cycle equals the number of columns.
- * @param {number} [uncycle=0] - Undo a previous cycle value to allow for a new one.
- */
-@mixin span($ratio: 1, $offset: 0, $cycle: 0, $uncycle: 0) {
-  $side: jeet-get-layout-direction();
-  $opposite-side: jeet-opposite-direction($side);
-  $span-width: jeet-get-span($ratio);
+@mixin span($ratio: 1, $offset: 0, $cycle: 0) {
+  $side: _get-layout-direction();
+  $opposite-side: _opposite-direction($side);
+  $span-width: _get-span($ratio);
   $margin-r: 0;
   $margin-l: $margin-r;
   @if $offset != 0 {
     @if $offset < 0 {
       $offset: $offset * -1;
-      $margin-r: jeet-get-span($offset);
+      $margin-r: _get-span($offset);
     } @else {
-      $margin-l: jeet-get-span($offset);
+      $margin-l: _get-span($offset);
     }
   }
 
-  @include cf;
+  @include clearfix;
   float: $side;
   clear: none;
   text-align: inherit;
@@ -156,64 +108,49 @@
   };
 
   @if $cycle != 0 {
-    &:nth-child(#{$cycle}n) {
-      float: $opposite-side;
+    &:nth-child(n) {
+      float: $side;
+      clear: none;
     }
+
+    &:nth-child(#{$cycle}n) {
+      float: _opposite-direction($side);
+    }
+
     &:nth-child(#{$cycle}n + 1) {
       clear: both;
     }
   }
-
-  @if $uncycle != 0 {
-    &:nth-child(#{$uncycle}n) {
-      float: $side;
-    }
-    &:nth-child(#{$uncycle}n + 1) {
-      clear: none;
-    }
-  }
-
 }
 
-/**
- * Reorder columns without altering the HTML.
- * @param {number} [$ratios=0] - Specify how far along you want the element to move.
- * @param {string} [$col-or-span=column] - Specify whether the element has a gutter or not.
- * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
- */
-@mixin shift($ratios: 0, $col-or-span: column, $gutter: $jeet-gutter) {
+
+@mixin move($ratios: 0, $col-or-span: column, $gutter: map-get($jeet, 'gutter')) {
   $translate: '';
-  $side: jeet-get-layout-direction();
+  $side: _get-layout-direction();
 
   @if $side == right {
-    $ratios: jeet-replace-nth($ratios, 0, nth($ratios, 1) * -1);
+    $ratios: _replace-nth($ratios, 0, nth($ratios, 1) * -1);
   }
 
   @if index("column" "col" "c", $col-or-span) {
-    $column-widths: jeet-get-column($ratios, $gutter);
+    $column-widths: _get-column($ratios, $gutter);
     $translate: nth($column-widths, 1) + nth($column-widths, 2);
   } @else {
-    $translate: jeet-get-span($ratios);
+    $translate: _get-span($ratios);
   }
 
   position: relative;
   left: $translate * 1%;
 }
 
-/**
- * Reset an element that has had shift() applied to it.
- */
-@mixin unshift() {
+
+@mixin unmove() {
   position: static;
   left: 0;
 }
 
-/**
- * View the grid and its layers for easy debugging.
- * @param {string} [$color=black] - The background tint applied.
- * @param {boolean} [$important=false] - Whether to apply the style as !important.
- */
-@mixin edit($color: black, $important: false) {
+
+@mixin debug($color: blue, $important: false) {
   @if $important {
     * {
       background: rgba($color, .05) !important;
@@ -225,20 +162,9 @@
   }
 }
 
-/**
- *  Alias for edit().
- */
-@mixin debug() {
-  @include edit;
-}
 
-/**
- * Horizontally center an element.
- * @param {number} [$max-width=1410px] - The max width the element can be.
- * @param {number} [$pad=0] - Specify the element's left and right padding.
- */
-@mixin center($max-width: $jeet-max-width, $pad: 0) {
-  @include cf;
+@mixin center($max-width: map-get($jeet, 'max-width'), $pad: 0) {
+  @include clearfix;
   width: auto;
   max-width: $max-width;
   float: none;
@@ -253,9 +179,7 @@
   };
 }
 
-/**
- * Uncenter an element.
- */
+
 @mixin uncenter() {
   max-width: none;
   margin-right: 0;
@@ -264,14 +188,10 @@
   padding-right: 0;
 }
 
-/**
- * Stack an element so that nothing is either side of it.
- * @param {number} [$pad=0] - Specify the element's left and right padding.
- * @param {boolean/string} [$align=false] - Specify the text align for the element.
- */
+
 @mixin stack($pad: 0, $align: false) {
-  $side: jeet-get-layout-direction();
-  $opposite-side: jeet-opposite-direction($side);
+  $side: _get-layout-direction();
+  $opposite-side: _opposite-direction($side);
 
   display: block;
   clear: both;
@@ -308,12 +228,10 @@
   }
 }
 
-/**
- * Unstack an element.
- */
+
 @mixin unstack() {
-  $side: jeet-get-layout-direction();
-  $opposite-side: jeet-opposite-direction($side);
+  $side: _get-layout-direction();
+  $opposite-side: _opposite-direction($side);
 
   text-align: $side;
   display: inline;
@@ -329,15 +247,11 @@
   }
 
   &:last-child {
-    margin-#{jeet-opposite-direction($side)}: 0;
+    margin-#{_opposite-direction($side)}: 0;
   }
 }
 
-/**
- * Center an element on either or both axes.
- * @requires A parent container with relative positioning.
- * @param {string} [$direction=both] - Specify which axes to center the element on.
- */
+
 @mixin align($direction: both) {
   position: absolute;
   transform-style: preserve-3d;
@@ -355,18 +269,11 @@
   }
 }
 
-/**
- * Apply a clearfix to an element.
- */
-@mixin cf() {
-  *zoom: 1;
 
-  &:before, &:after {
+@mixin clearfix() {
+  &::after {
     content: '';
     display: table;
-  }
-
-  &:after {
     clear: both;
   }
 }

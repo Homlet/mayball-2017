@@ -1,0 +1,62 @@
+h1,
+h2 {
+  font-family: $font-header;
+  margin: 0;
+  white-space: nowrap;
+}
+
+h1 {
+  font-size: $font-size-header-1;
+}
+
+h2 {
+  font-size: $font-size-header-2;
+  font-weight: normal;
+}
+
+header {
+  // Local variables.
+  $ratio-logo: .25;
+
+  .moon {
+    position: fixed;
+    right: 18%;
+    top: 8%;
+    width: 5rem;
+    z-index: -1;
+  }
+
+  .container {
+    @include center(35rem);
+
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+  }
+
+  .logo {
+    @include column($ratio-logo);
+  }
+
+  .title {
+    @include column(1 - $ratio-logo);
+
+    text-align: center;
+  }
+
+  .big-top {
+    background-image: url('../img/big_top.svg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45vw;
+    width: 100%;
+
+    @media (max-width: $media-width-medium) {
+      height: 60vw;
+    }
+
+    @media (max-width: $media-width-small) {
+      height: 75vw;
+    }
+  }
+}
