@@ -1,3 +1,22 @@
 @mixin drop-shadow {
   box-shadow: 0 2px 4px $color-shadow;
 }
+
+@mixin scale($param, $base, $factor: .6) {
+  #{$param}: $base;
+
+  @media (max-width: $media-width-medium) {
+    #{$param}: $base * (1 + $factor) / 2;
+  }
+
+  @media (max-width: $media-width-small) {
+    #{$param}: $base * $factor;
+  }
+}
+
+@mixin sidespill($amount: 5px) {
+  margin-left: -$amount;
+  margin-right: -$amount;
+  padding-left: $amount;
+  padding-right: $amount;
+}

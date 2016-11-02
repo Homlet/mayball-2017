@@ -1,62 +1,59 @@
-h1,
-h2 {
-  font-family: $font-header;
-  margin: 0;
-  white-space: nowrap;
-}
-
-h1 {
-  font-size: $font-size-header-1;
-}
-
-h2 {
-  font-size: $font-size-header-2;
-  font-weight: normal;
-}
-
 header {
-  // Local variables.
-  $ratio-logo: .25;
-
   .moon {
-    position: fixed;
-    right: 18%;
+    position: absolute;
+    right: 12%;
     top: 8%;
     width: 5rem;
     z-index: -1;
   }
 
   .container {
-    @include center(35rem);
+    // This offsets the big-top, accounting for the fact that small screens tend to be portrait.
+    @include scale(margin-bottom, 3rem, 1.4);
 
-    margin-bottom: 1rem;
+    // Vertically centre the title and logo...
+    align-items: center;
+    // ...and horizontally centre.
+    display: flex;
+    justify-content: center;
     margin-top: 5rem;
   }
 
   .logo {
-    @include column($ratio-logo);
+    @include scale(width, 8rem);
+    margin-bottom: .7rem;
+    margin-right: 1.5rem;
   }
 
   .title {
-    @include column(1 - $ratio-logo);
-
     text-align: center;
   }
 
   .big-top {
+    @include scale(height, 48vw, 1.8);
+    @include sidespill;
+
     background-image: url('../img/big_top.svg');
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 45vw;
+    width: 100%;
+  }
+
+  nav {
+    @include scale(height, 5rem, 1.4);
+    @include sidespill;
+
+    background-image: url('../img/nav.svg');
+    background-position: center top;
+    background-repeat: repeat-x;
+    background-size: contain;
+    margin-top: -1px;  // Fix gap between svgs.
     width: 100%;
 
+    // Ok, so I'm not happy about this, but it works quite well.
     @media (max-width: $media-width-medium) {
-      height: 60vw;
-    }
-
-    @media (max-width: $media-width-small) {
-      height: 75vw;
+      background-size: cover;
     }
   }
 }
