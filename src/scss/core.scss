@@ -9,6 +9,7 @@
 
 // Includes:
 @import 'includes/header';
+@import 'includes/about';
 
 html,
 body {
@@ -19,6 +20,11 @@ body {
   background-color: $color-night-sky;
   color: $color-light-text;
   font-family: $font-body;
+}
+
+section {
+  padding: 5rem 2rem;
+  z-index: 0;
 }
 
 h1,
@@ -36,6 +42,15 @@ h2 {
   @include scale(font-size, $font-size-header-2);
 
   font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin: .8rem 0;
+  }
 }
 
 a {

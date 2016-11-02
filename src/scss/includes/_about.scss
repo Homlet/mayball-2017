@@ -1,0 +1,26 @@
+.about {
+  background-color: $color-about;
+  color: $color-dark-text;
+
+  .blurb {
+    @include column(2/3);
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+    }
+  }
+
+  .date-time-location {
+    @include column(1/3);
+
+    text-align: center;
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+
+      border-top: solid 2px $color-dark-text;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+}

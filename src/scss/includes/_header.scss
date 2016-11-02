@@ -41,7 +41,8 @@ header {
   }
 
   nav {
-    @include scale(height, 5rem, 1.4);
+    @include scale(height, 6rem, 1.3);
+    @include scale(margin-bottom, -6rem, .6);
     @include sidespill;
 
     background-image: url('../img/nav.svg');
@@ -49,11 +50,25 @@ header {
     background-repeat: repeat-x;
     background-size: contain;
     margin-top: -1px;  // Fix gap between svgs.
+    position: relative;
     width: 100%;
+    z-index: 1;
 
     // Ok, so I'm not happy about this, but it works quite well.
     @media (max-width: $media-width-medium) {
       background-size: cover;
     }
+  }
+
+  .entrance {
+    @include scale(height, 42vw, 1.4);
+    @include sidespill;
+
+    background-image: url('../img/entrance.svg');
+    background-position: center top;
+    background-repeat: repeat-xx;
+    background-size: cover;
+    margin-bottom: -1px;  // Fix gap between svgs.
+    width: 100%;
   }
 }
