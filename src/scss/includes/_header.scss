@@ -40,24 +40,88 @@ header {
     width: 100%;
   }
 
-  nav {
-    @include scale(height, 6rem, 1.3);
-    @include scale(margin-bottom, -6rem, .6);
-    @include sidespill;
-
-    background-image: url('../img/nav.svg');
-    background-position: center top;
-    background-repeat: repeat-x;
-    background-size: contain;
+  .canopy {
+    margin-bottom: -2rem;
     margin-top: -1px;  // Fix gap between svgs.
     position: relative;
-    width: 100%;
+    width: 100% !important;  // !important to avoid issues when pinned.
     z-index: 1;
 
-    // Ok, so I'm not happy about this, but it works quite well.
-    @media (max-width: $media-width-medium) {
-      background-size: cover;
+    // Jagged edge CSS hack.
+    &::after {
+      background-image: linear-gradient(145deg, $color-deep-red 33%, transparent 33%),
+                        linear-gradient(35deg, transparent 66%, $color-deep-red 66%);
+      background-position: 50% 100%;
+      background-repeat: repeat-x;
+      background-size: 2rem 2rem;
+      content: '';
+      display: block;
+      height: 2rem;
+      left: 0;
+      position: relative;
+      top: 0;
+      width: 100%;
     }
+  }
+
+  nav {
+    background-color: $color-deep-red;
+  }
+
+  nav ul {
+    @extend %clearfix;
+
+    margin: 0;
+    padding: 0 1rem;
+    text-align: center;
+
+    @media (max-width: $media-width-small) {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms;
+
+      &.open {
+        max-height: 60vh;
+      }
+    }
+  }
+
+  nav li {
+    @include column(1/5);
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+    }
+  }
+
+  nav a {
+    color: $color-light-text;
+    display: block;
+    font-family: $font-header;
+    font-weight: bold;
+    padding: 1rem 0;
+    white-space: nowrap;
+
+    &:hover::after {
+      content: '\00a0\00a0\00a0—';
+      display: inline-block;
+    }
+
+    &:hover::before {
+      content: '—\00a0\00a0\00a0';
+      display: inline-block;
+    }
+
+    &:active {
+      color: $color-light-text;
+    }
+  }
+
+  nav .hamburger {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+    margin: 0 auto;
+    padding: 1rem 0;
   }
 
   .entrance {

@@ -10,6 +10,7 @@
 // Includes:
 @import 'includes/header';
 @import 'includes/about';
+@import 'includes/hamburger';
 
 html,
 body {
@@ -47,10 +48,6 @@ h2 {
 ul {
   list-style: none;
   padding: 0;
-
-  li {
-    margin: .8rem 0;
-  }
 }
 
 a {
@@ -68,4 +65,20 @@ a {
 
 .container {
   @include center(800px);
+}
+
+.small {
+  @media (min-width: $media-width-small) {
+    display: none;
+  }
+}
+
+%clearfix {
+  &::after {
+    clear: both;
+    content: ' ';
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
 }

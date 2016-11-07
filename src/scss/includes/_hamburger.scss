@@ -1,0 +1,58 @@
+.hamburger {
+  height: 2rem;
+  position: relative;
+  width: 2rem;
+
+  .bar {
+    background-color: $color-light-text;
+    box-sizing: border-box;
+    height: .2rem;
+    transition: 300ms;
+    width: 100%;
+  }
+
+  .diagonal-1 {
+    float: left;
+    margin-top: .2rem;
+    position: relative;
+  }
+
+  .horizontal {
+    float: left;
+    margin-top: .5rem;
+    position: relative;
+  }
+
+  .diagonal-2 {
+    float: left;
+    margin-top: .5rem;
+    position: relative;
+  }
+
+  label {
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  input[type='checkbox'] {
+    display: none;
+
+    &:checked {
+      ~ label .diagonal-1 {
+        margin-top: .8rem;
+        transform: rotate(135deg);
+      }
+
+      ~ label .horizontal {
+        opacity: 0;
+      }
+
+      ~ label .diagonal-2 {
+        margin-top: -1rem;
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}
