@@ -1,0 +1,80 @@
+.ticket-top {
+  background-image: url('../img/ticket_top.svg');
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 2rem;
+  margin-bottom: -1px;
+  margin-top: -2rem;
+  position: relative;
+  width: 100%;
+  z-index: 50;
+
+  @media (max-width: $media-width-medium) {
+    background-size: cover;
+  }
+}
+
+.ticket-bottom {
+  background-image: url('../img/ticket_bottom.svg');
+  background-position: center top;
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 2rem;
+  margin-bottom: -2rem;
+  margin-top: -1px;
+  position: relative;
+  width: 100%;
+  z-index: 50;
+
+  @media (max-width: $media-width-medium) {
+    background-size: cover;
+  }
+}
+
+#ticketing {
+  background-color: $color-ticketing;
+  color: $color-medium-text;
+
+  h4 {
+    color: $color-dark-text;
+  }
+
+  .blurb {
+    @include column(2/5);
+
+    @media (max-width: $media-width-medium) {
+      @include stack;
+    }
+  }
+
+  .pricing {
+    width: 100%;
+
+    td:not(:first-child) {
+      text-align: right;
+    }
+  }
+
+  .ticket {
+    font-size: .8rem;
+    padding-left: 1rem;
+  }
+
+  .ticket-machine {
+    @include column(3/5);
+
+    background-image: url('../img/ticket_machine.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 24rem;
+
+    @media (max-width: $media-width-medium) {
+      @include stack;
+
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+}

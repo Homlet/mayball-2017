@@ -2,7 +2,7 @@
   box-shadow: 0 2px 4px $color-shadow;
 }
 
-@mixin scale($param, $base, $factor: .6) {
+@mixin scale($param, $base, $factor: .5) {
   #{$param}: $base;
 
   @media (max-width: $media-width-medium) {

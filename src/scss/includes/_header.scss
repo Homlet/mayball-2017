@@ -45,11 +45,11 @@ header {
     margin-top: -1px;  // Fix gap between svgs.
     position: relative;
     width: 100% !important;  // !important to avoid issues when pinned.
-    z-index: 1;
+    z-index: 100;
 
     // Jagged edge CSS hack.
     &::after {
-      background-image: linear-gradient(145deg, $color-deep-red 33%, transparent 33%),
+      background-image: linear-gradient(145deg, $color-deep-red 33%, transparent 34%),
                         linear-gradient(35deg, transparent 66%, $color-deep-red 66%);
       background-position: 50% 100%;
       background-repeat: repeat-x;
@@ -89,6 +89,22 @@ header {
   nav li {
     @include column(1/5);
 
+/*    &:first-child {
+      background: url('../img/ticket.svg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      a {
+        color: $color-dark-text;
+      }
+
+      a::before,
+      a::after {
+        visibility: hidden;
+      }
+    } */
+
     @media (max-width: $media-width-small) {
       @include stack;
     }
@@ -100,20 +116,36 @@ header {
     font-family: $font-header;
     font-weight: bold;
     padding: 1rem 0;
+    vertical-align: middle;
     white-space: nowrap;
-
-    &:hover::after {
-      content: '\00a0\00a0\00a0—';
-      display: inline-block;
-    }
-
-    &:hover::before {
-      content: '—\00a0\00a0\00a0';
-      display: inline-block;
-    }
 
     &:active {
       color: $color-light-text;
+    }
+
+    &::after,
+    &::before {
+      display: inline-block;
+      font-size: 1.5rem;
+      vertical-align: middle;
+      visibility: hidden;
+    }
+
+    &::after,
+    &::after {
+      content: '\00a0\00a0\00a0\261c';
+    }
+
+    &::before,
+    &::before {
+      content: '\261e\00a0\00a0\00a0';
+    }
+
+    &:hover::after,
+    &.selected::after,
+    &:hover::before,
+    &.selected::before {
+      visibility: visible;
     }
   }
 

@@ -11,6 +11,8 @@
 @import 'includes/header';
 @import 'includes/about';
 @import 'includes/hamburger';
+@import 'includes/ticketing';
+@import 'includes/ents';
 
 html,
 body {
@@ -29,20 +31,48 @@ section {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   font-family: $font-header;
-  margin: 0;
   white-space: nowrap;
 }
 
 h1 {
-  @include scale(font-size, $font-size-header-1);
+  @include scale(font-size, 4rem);
+
+  margin: 0;
+  text-align: center;
 }
 
 h2 {
-  @include scale(font-size, $font-size-header-2);
+  @include scale(font-size, 3.2rem);
 
   font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+  text-align: center;
+
+  &::after {
+    content: '\00a0\00a0\00a0—';
+    display: inline-block;
+  }
+
+  &::before {
+    content: '—\00a0\00a0\00a0';
+    display: inline-block;
+  }
+}
+
+h4 {
+  border-bottom: 1px solid;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: .2rem;
 }
 
 ul {
@@ -71,6 +101,11 @@ a {
   @media (min-width: $media-width-small) {
     display: none;
   }
+}
+
+.right {
+  text-align: right;
+  width: 100%;
 }
 
 %clearfix {
