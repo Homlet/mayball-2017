@@ -14,6 +14,28 @@
         });
     }
 
+    function initialize_parallax() {
+        var moon_tween = TweenLite.to(".moon", 1, { y: "900%" });
+        new ScrollMagic.Scene({ triggerElement: "body", duration: 1000, triggerHook: 0 })
+            .setTween(moon_tween)
+            .addTo(controller);
+
+        var logo_tween = TweenLite.to(".logo", 1, { y: "-50%" });
+        new ScrollMagic.Scene({ triggerElement: "body", duration: 250, triggerHook: 0 })
+            .setTween(logo_tween)
+            .addTo(controller);
+
+        var sign_tween = TweenLite.to(".sign", 1, { y: "60%" });
+        new ScrollMagic.Scene({ triggerElement: "body", duration: 1000, triggerHook: 0 })
+            .setTween(sign_tween)
+            .addTo(controller);
+
+        var trees_tween = TweenLite.to(".trees", 1, { y: "50%"});
+        new ScrollMagic.Scene({ triggerElement: "body", duration: 1000, triggerHook: 0 })
+            .setTween(trees_tween)
+            .addTo(controller);
+    }
+
     function initialize_nav() {
         // Pin the navbar to the top of the screen.
         new ScrollMagic.Scene({ triggerElement: ".canopy", triggerHook: 0 })
@@ -64,6 +86,7 @@
 
     function initialize() {
         initialize_scrollmagic();
+        initialize_parallax();
         initialize_nav();
     }
 

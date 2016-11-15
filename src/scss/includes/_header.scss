@@ -1,9 +1,10 @@
 header {
   .moon {
+    @include scale(width, 5rem, .6);
+
     position: absolute;
     right: 12%;
     top: 8%;
-    width: 5rem;
     z-index: -1;
   }
 
@@ -15,12 +16,23 @@ header {
     justify-content: center;
     margin-bottom: 3rem;
     margin-top: 5rem;
+    top: 0;
+  }
+
+  .logomark {
+    @include scale(width, 8rem);
+    margin-bottom: .7rem;
+    margin-right: 1.5rem;
+  }
+
+  .logotype {
+    text-align: center;
   }
 
   .sign {
     @include scale(height, 20vw, 1.8);
-    @include scale(top, 20vw, 2.1);
     @include scale(margin-top, -20vw, 2.1);
+    @include scale(top, 20vw, 2.1);
 
     background-image: url('../img/sign.svg');
     background-position: center top;
@@ -31,14 +43,18 @@ header {
     z-index: 5;
   }
 
-  .logo {
-    @include scale(width, 8rem);
-    margin-bottom: .7rem;
-    margin-right: 1.5rem;
-  }
+  .trees {
+    @include scale(height, 40vw, 1.8);
+    @include scale(margin-top, -40vw, 1.8);
+    @include scale(top, 40vw, 1.8);
 
-  .title {
-    text-align: center;
+    background-image: url('../img/trees.svg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    z-index: 3;
   }
 
   .big-top {
@@ -179,6 +195,8 @@ header {
     background-repeat: repeat-xx;
     background-size: cover;
     margin-bottom: -1px;  // Fix gap between svgs.
+    position: relative;
     width: 100%;
+    z-index: 10;
   }
 }
