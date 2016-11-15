@@ -13,6 +13,7 @@
 @import 'includes/hamburger';
 @import 'includes/ticketing';
 @import 'includes/ents';
+@import 'includes/footer';
 
 html,
 body {
@@ -25,7 +26,7 @@ body {
   font-family: $font-body;
 }
 
-section {
+section, footer {
   padding: 5rem 2rem;
   z-index: 0;
 }
@@ -33,9 +34,9 @@ section {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   font-family: $font-header;
-  white-space: nowrap;
 }
 
 h1 {
@@ -43,6 +44,7 @@ h1 {
 
   margin: 0;
   text-align: center;
+  white-space: nowrap;
 }
 
 h2 {
@@ -51,11 +53,13 @@ h2 {
   font-weight: normal;
   margin: 0;
   text-align: center;
+  white-space: nowrap;
 }
 
 h3 {
   font-size: 1.5rem;
   text-align: center;
+  white-space: nowrap;
 
   &::after {
     content: '\00a0\00a0\00a0—';
@@ -75,6 +79,12 @@ h4 {
   margin-bottom: .2rem;
 }
 
+h5 {
+  margin-bottom: .5rem;
+  margin-top: .8rem;
+  text-align: center;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -89,12 +99,12 @@ a {
   }
 }
 
-.wrapper {
+.overflow-wrapper {
   overflow-x: hidden;
 }
 
-.container {
-  @include center(800px);
+.center {
+  @include center(50rem);
 }
 
 .small {

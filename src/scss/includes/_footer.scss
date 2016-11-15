@@ -1,0 +1,36 @@
+footer {
+  $container-width: 54rem;
+
+  .center {
+    @include center($container-width);
+  }
+
+  .contact {
+    margin-bottom: 2rem;
+    text-align: center;
+    width: $container-width / 4;
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+    }
+
+    img {
+      border: 2px solid $color-light-text;
+      height: ($container-width / 4 - 5rem) * 6 / 5;
+      width: $container-width / 4 - 5rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+
+      &:hover {
+        cursor: text;
+      }
+    }
+  }
+
+  .team {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -63,12 +63,12 @@
 
   .ticket-machine {
     @include column(3/5);
+    @include scale(height, 24rem, .6);
 
     background-image: url('../img/ticket_machine.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 24rem;
 
     @media (max-width: $media-width-medium) {
       @include stack;

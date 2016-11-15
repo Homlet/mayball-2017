@@ -7,16 +7,28 @@ header {
     z-index: -1;
   }
 
-  .container {
-    // This offsets the big-top, accounting for the fact that small screens tend to be portrait.
-    @include scale(margin-bottom, 3rem, 1.4);
-
+  .center {
     // Vertically centre the title and logo...
     align-items: center;
     // ...and horizontally centre.
     display: flex;
     justify-content: center;
+    margin-bottom: 3rem;
     margin-top: 5rem;
+  }
+
+  .sign {
+    @include scale(height, 20vw, 1.8);
+    @include scale(top, 20vw, 2.1);
+    @include scale(margin-top, -20vw, 2.1);
+
+    background-image: url('../img/sign.svg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    width: 100%;
+    z-index: 5;
   }
 
   .logo {
@@ -30,14 +42,16 @@ header {
   }
 
   .big-top {
-    @include scale(height, 48vw, 1.8);
+    @include scale(height, 48vw, 1.7);
     @include sidespill;
 
     background-image: url('../img/big_top.svg');
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
     width: 100%;
+    z-index: 10;
   }
 
   .canopy {
@@ -49,7 +63,7 @@ header {
 
     // Jagged edge CSS hack.
     &::after {
-      background-image: linear-gradient(145deg, $color-deep-red 33%, transparent 34%),
+      background-image: linear-gradient(145deg, $color-deep-red 33%, transparent 33%),
                         linear-gradient(35deg, transparent 66%, $color-deep-red 66%);
       background-position: 50% 100%;
       background-repeat: repeat-x;
