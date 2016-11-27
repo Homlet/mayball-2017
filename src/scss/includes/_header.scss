@@ -1,20 +1,29 @@
 header {
   .moon {
     @include scale(width, 5rem, .6);
+    @include scale(height, 5rem, .6);
 
-    position: absolute;
-    right: 12%;
+    background-image: url('../img/moon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    position: fixed;
+    right: 10%;
     top: 8%;
     z-index: -1;
+
+    &.finished {
+      position: absolute;
+    }
   }
 
-  .center {
+  .logo {
     // Vertically centre the title and logo...
     align-items: center;
     // ...and horizontally centre.
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     margin-top: 5rem;
     top: 0;
   }
@@ -30,17 +39,21 @@ header {
   }
 
   .sign {
-    @include scale(height, 20vw, 1.8);
-    @include scale(margin-top, -20vw, 2.1);
-    @include scale(top, 20vw, 2.1);
+    @include scale(height, 25vw, 1.6);
+    @include scale(margin-top, -18vw, 2.1);
+    @include scale(top, 18vw, 2.1);
 
     background-image: url('../img/sign.svg');
-    background-position: center top;
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
     width: 100%;
     z-index: 5;
+
+    @media (max-width: $media-width-small) {
+      background-size: cover;
+    }
   }
 
   .trees {
@@ -141,7 +154,7 @@ header {
   }
 
   nav a {
-    color: $color-light-text;
+    color: $color-white-text;
     display: block;
     font-family: $font-header;
     font-weight: bold;
@@ -149,8 +162,8 @@ header {
     vertical-align: middle;
     white-space: nowrap;
 
-    &:active {
-      color: $color-light-text;
+    &:hover {
+      color: $color-white-text;
     }
 
     &::after,

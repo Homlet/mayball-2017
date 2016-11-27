@@ -1,4 +1,4 @@
-(() => {
+(function () {
     // Check the jQuery and ScrollMagic libraries loaded correctly.
     if (!$) throw new Exception("jQuery not loaded!");
     if (!ScrollMagic) throw new Exception("ScrollMagic not loaded!");
@@ -15,9 +15,8 @@
     }
 
     function initialize_parallax() {
-        var moon_tween = TweenLite.to(".moon", 1, { y: "900%" });
-        new ScrollMagic.Scene({ triggerElement: "body", duration: 1000, triggerHook: 0 })
-            .setTween(moon_tween)
+        new ScrollMagic.Scene({ triggerElement: ".canopy", triggerHook: 0 })
+            .setClassToggle(".moon", "finished")
             .addTo(controller);
 
         var logo_tween = TweenLite.to(".logo", 1, { y: "-50%" });
@@ -84,10 +83,39 @@
         });
     }
 
+    function initialize_animation() {
+        // Animate the ticket machine as we scroll past it.
+        var tm_images = [
+            "url('img/ticket_machine.svg')",
+            "url('img/ticket_machine-01.svg'), url('img/ticket_machine.svg')",
+            "url('img/ticket_machine-02.svg'), url('img/ticket_machine.svg')",
+            "url('img/ticket_machine-03.svg'), url('img/ticket_machine.svg')"
+        ];
+        var last = 0;
+        var tm_data = { current: 0 };
+        var tm_tween = TweenLite.to(tm_data, 0.5, {
+            current: tm_images.length - 1,
+            ease: Linear.easeNone,
+            onUpdate: function () {
+                tm_data.current = Math.floor(tm_data.current)
+                if (last == tm_data.current) { return; }
+                last = tm_data.current;
+                $(".ticket-machine").css("background-image", tm_images[tm_data.current]);
+            }
+        });
+        new ScrollMagic.Scene({
+            triggerElement: ".ticket-machine",
+            duration: 200,
+            triggerHook: 0.6 })
+            .setTween(tm_tween)
+            .addTo(controller);
+    }
+
     function initialize() {
         initialize_scrollmagic();
         initialize_parallax();
         initialize_nav();
+        initialize_animation();
     }
 
     // jQuery hooks.

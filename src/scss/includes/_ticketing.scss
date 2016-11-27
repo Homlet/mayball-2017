@@ -36,7 +36,7 @@
   background-color: $color-ticketing;
   color: $color-medium-text;
 
-  h4 {
+  h3, h4 {
     color: $color-dark-text;
   }
 
@@ -56,7 +56,7 @@
     }
   }
 
-  .ticket {
+  .ticket-blurb {
     font-size: .8rem;
     padding-left: 1rem;
   }
