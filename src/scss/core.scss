@@ -78,12 +78,12 @@ h3 {
   white-space: nowrap;
 
   &::after {
-    content: '\00a0\00a0\00a0—';
+    content: '\00a0\00a0\00a0——';
     display: inline-block;
   }
 
   &::before {
-    content: '—\00a0\00a0\00a0';
+    content: '——\00a0\00a0\00a0';
     display: inline-block;
   }
 }
