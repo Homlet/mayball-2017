@@ -106,6 +106,10 @@ ul {
   padding: 0;
 }
 
+table {
+  width: 100%;
+}
+
 a {
   color: $color-link;
   text-decoration: none;
@@ -113,6 +117,10 @@ a {
   &:active {
     color: $color-link-active;
   }
+}
+
+.header-row {
+  font-weight: bold;
 }
 
 .overflow-wrapper {
