@@ -1,3 +1,21 @@
+.lawn {
+  @include scale(margin-bottom, -4vw, 4);
+  @include scale(margin-top, -4vw, 4);
+
+  background-image: url('../img/lawn.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 22vw;
+  position: relative;
+  width: 100%;
+  z-index: 50;
+
+  @media (max-width: $media-width-medium) {
+    background-size: cover;
+  }
+}
+
 #workers {
   background-color: $color-workers;
   color: $color-light-text;
