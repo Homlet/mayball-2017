@@ -2,6 +2,30 @@
   background-color: $color-sponsorship;
   color: $color-medium-text;
 
+  .sponsors {
+    align-items: center;
+    background: $color-sponsor-bar;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin: 0 -2rem;
+    padding: 1.5rem 2rem;
+    width: 100%;
+
+    li {
+      margin: 1rem;
+      max-width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    @media (max-width: $media-width-medium) {
+      flex-wrap: wrap;
+    }
+  }
+
   h3,
   h4 {
     color: $color-dark-text;
