@@ -1,27 +1,23 @@
 footer {
-  $container-width: 54rem;
-
   .center {
-    @include center($container-width);
+    @include center(60rem);
   }
 
   .contact {
+    @include scale(width, 14rem, .55);
+
     margin-bottom: 2rem;
     text-align: center;
-    width: $container-width / 4;
-
-    @media (max-width: $media-width-small) {
-      @include stack;
-    }
 
     img {
+      @include scale(width, 75%, 1.2);
+      @include scale(height, 11rem * 7 / 6, 0.6);
+
       border: 2px solid $color-light-text;
-      height: ($container-width / 4 - 5rem) * 7 / 6;
-      width: $container-width / 4 - 5rem;
     }
 
     label {
-      font-size: 0.8rem;
+      font-size: .8rem;
 
       &:hover {
         cursor: text;
@@ -29,8 +25,10 @@ footer {
     }
   }
 
-  .team {
+  .committee {
+    align-items: flex-start;
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
   }
 }
