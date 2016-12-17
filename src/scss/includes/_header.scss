@@ -132,22 +132,6 @@ header {
   nav li {
     @include column(1/5);
 
-/*    &:first-child {
-      background: url('../img/ticket.svg');
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: contain;
-
-      a {
-        color: $color-dark-text;
-      }
-
-      a::before,
-      a::after {
-        visibility: hidden;
-      }
-    } */
-
     @media (max-width: $media-width-small) {
       @include stack;
     }
