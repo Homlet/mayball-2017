@@ -19,6 +19,10 @@
             .setClassToggle(".moon", "finished")
             .addTo(controller);
 
+        new ScrollMagic.Scene({ triggerElement: ".canopy", triggerHook: 0 })
+            .setClassToggle(".stars", "finished")
+            .addTo(controller);
+
         var logo_tween = TweenLite.to(".logo", 1, { y: "-50%" });
         new ScrollMagic.Scene({ triggerElement: "body", duration: 250, triggerHook: 0 })
             .setTween(logo_tween)
