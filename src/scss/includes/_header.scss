@@ -106,13 +106,7 @@ header {
     z-index: 10;
   }
 
-  .canopy {
-    margin-bottom: -2rem;
-    margin-top: -1px;  // Fix gap between svgs.
-    position: relative;
-    width: 100% !important;  // !important to avoid issues when pinned.
-    z-index: 100;
-
+  %jagged-edge {
     // Jagged edge CSS hack.
     &::after {
       background-image: linear-gradient(145deg, $color-deep-red 33%, transparent 33%),
@@ -123,11 +117,25 @@ header {
       content: '';
       display: block;
       height: 2rem;
-      left: 0;
-      position: relative;
-      top: 0;
+      margin-bottom: -2rem;
       width: 100%;
     }
+  }
+
+  .canopy {
+    @extend %jagged-edge;
+
+    margin-bottom: -2rem;
+    margin-top: -1px;  // Fix gap between svgs.
+    position: relative;
+    width: 100% !important;  // !important to avoid issues when pinned.
+    z-index: 100;
+  }
+
+  .static-canopy {
+    @extend %jagged-edge;
+
+    width: 100%;
   }
 
   nav {
@@ -166,6 +174,7 @@ header {
     font-family: $font-header;
     font-weight: bold;
     padding: 1rem 0;
+    text-decoration: none;
     vertical-align: middle;
     white-space: nowrap;
 
@@ -204,6 +213,11 @@ header {
 
     margin: 0 auto;
     padding: 1rem 0;
+  }
+
+  nav h3 {
+    padding: 1em 0;
+    margin: 0;
   }
 
   .entrance {

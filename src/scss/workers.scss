@@ -1,0 +1,36 @@
+// Libraries:
+@import 'jeet/index';
+
+// Partials:
+@import 'partials/colors';
+@import 'partials/fonts';
+@import 'partials/media';
+@import 'partials/mixins';
+
+// Includes:
+@import 'includes/core';
+@import 'includes/header';
+@import 'includes/footer';
+
+#workers {
+  color: $color-light-text;
+
+  h3,
+  h4 {
+    color: $color-white-text;
+  }
+
+  ul {
+    list-style-position: outside;
+    list-style-type: disc;
+    padding-left: 2rem;
+
+    li {
+      padding-left: .5rem;
+    }
+  }
+
+  td:not(:first-child) {
+    text-align: center;
+  }
+}

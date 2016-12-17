@@ -1,34 +1,3 @@
 footer {
-  .center {
-    @include center(60rem);
-  }
-
-  .contact {
-    @include scale(width, 14rem, .55);
-
-    margin-bottom: 2rem;
-    text-align: center;
-
-    img {
-      @include scale(width, 75%, 1.2);
-      @include scale(height, 11rem * 7 / 6, 0.6);
-
-      border: 2px solid $color-light-text;
-    }
-
-    label {
-      font-size: .8rem;
-
-      &:hover {
-        cursor: text;
-      }
-    }
-  }
-
-  .committee {
-    align-items: flex-start;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-  }
+  // TODO.
 }
