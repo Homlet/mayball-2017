@@ -62,9 +62,9 @@ header {
   }
 
   .sign {
-    @include scale(height, 25vw, 1.6);
+    @include scale(height, 24vw, 1.6);
     @include scale(margin-top, -18vw, 2.1);
-    @include scale(top, 18vw, 2.1);
+    @include scale(top, 16vw, 2.1);
 
     background-image: url('../img/sign.svg');
     background-position: center bottom;
@@ -79,10 +79,23 @@ header {
     }
   }
 
+  .skyline {
+    background-image: url('../img/skyline.svg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vw;
+    margin-top: -40vw;
+    position: relative;
+    top: 26vw;
+    width: 100%;
+    z-index: 2;
+  }
+
   .trees {
     @include scale(height, 40vw, 1.8);
     @include scale(margin-top, -40vw, 1.8);
-    @include scale(top, 40vw, 1.8);
+    @include scale(top, 42vw, 1.8);
 
     background-image: url('../img/trees.svg');
     background-position: center bottom;
@@ -125,7 +138,6 @@ header {
   .canopy {
     @extend %jagged-edge;
 
-    margin-bottom: -2rem;
     margin-top: -1px;  // Fix gap between svgs.
     position: relative;
     width: 100% !important;  // !important to avoid issues when pinned.
@@ -135,6 +147,7 @@ header {
   .static-canopy {
     @extend %jagged-edge;
 
+    margin-bottom: -2rem;
     width: 100%;
   }
 

@@ -33,6 +33,11 @@
             .setTween(sign_tween)
             .addTo(controller);
 
+        var trees_tween = TweenLite.to(".skyline", 1, { y: "80%"});
+        new ScrollMagic.Scene({ triggerElement: "body", duration: 1000, triggerHook: 0 })
+            .setTween(trees_tween)
+            .addTo(controller);
+
         var trees_tween = TweenLite.to(".trees", 1, { y: "50%"});
         new ScrollMagic.Scene({ triggerElement: "body", duration: 1000, triggerHook: 0 })
             .setTween(trees_tween)
