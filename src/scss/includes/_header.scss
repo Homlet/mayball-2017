@@ -130,7 +130,6 @@ header {
       content: '';
       display: block;
       height: 2rem;
-      margin-bottom: -2rem;
       width: 100%;
     }
   }
@@ -242,6 +241,7 @@ header {
     background-repeat: repeat-xx;
     background-size: cover;
     margin-bottom: -1px;  // Fix gap between svgs.
+    margin-top: -2rem;
     position: relative;
     width: 100%;
     z-index: 10;
