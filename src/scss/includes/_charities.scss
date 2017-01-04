@@ -1,9 +1,20 @@
 #charities {
   background-color: $color-charities;
-  color: $color-light-text;
+  color: $color-dark-text;
 
-  h3,
-  h4 {
-    color: $color-white-text;
+  a {
+    color: $color-dark-link-text;
+
+    &:active {
+      color: $color-medium-text;
+    }
+  }
+
+  .charity {
+    @include column(1/2);
+
+    @media (max-width: $media-width-medium) {
+      @include stack;
+    }
   }
 }
