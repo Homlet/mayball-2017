@@ -1,3 +1,2 @@
 find . -regex ".*\.DS_Store" | xargs rm
-rm -rf ./dist/*
-
+(cd dist; git rm -rf .; git clean -dxf)
