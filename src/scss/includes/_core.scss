@@ -16,7 +16,10 @@ footer {
 }
 
 h1,
-h2,
+h2 {
+  font-family: $font-title;
+}
+
 h3,
 h4,
 h5 {
@@ -48,11 +51,13 @@ h3 {
   &::after {
     content: '\00a0\00a0\00a0——';
     display: inline-block;
+    font-family: 'Cinzel';  // Bit of a hack.
   }
 
   &::before {
     content: '——\00a0\00a0\00a0';
     display: inline-block;
+    font-family: 'Cinzel';
   }
 }
 
