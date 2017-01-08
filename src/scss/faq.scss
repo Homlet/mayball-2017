@@ -1,0 +1,24 @@
+// Libraries:
+@import 'jeet/index';
+
+// Partials:
+@import 'partials/colors';
+@import 'partials/fonts';
+@import 'partials/media';
+@import 'partials/mixins';
+
+// Includes:
+@import 'includes/core';
+@import 'includes/header';
+@import 'includes/accordion';
+@import 'includes/footer';
+
+h3 {
+  @include scale(font-size, 150%, .65);
+}
+
+#faq {
+  @include light;
+
+  padding-top: 2rem;
+}

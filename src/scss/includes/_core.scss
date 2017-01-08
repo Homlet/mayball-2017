@@ -69,7 +69,7 @@ h5 {
   text-align: center;
 }
 
-ul {
+ul:not(.display) {
   list-style: none;
   padding: 0;
 }

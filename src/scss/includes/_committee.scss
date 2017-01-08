@@ -1,4 +1,8 @@
 #committee {
+  @include light;
+
+  background-color: $color-committee;
+
   .center {
     @include center(60rem);
   }

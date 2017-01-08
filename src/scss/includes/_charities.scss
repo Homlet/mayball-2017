@@ -1,14 +1,7 @@
 #charities {
+  @include dark;
+
   background-color: $color-charities;
-  color: $color-dark-text;
-
-  a {
-    color: $color-dark-link-text;
-
-    &:active {
-      color: $color-medium-text;
-    }
-  }
 
   .charity {
     @include column(1/2);

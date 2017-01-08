@@ -20,3 +20,41 @@
   padding-left: $amount;
   padding-right: $amount;
 }
+
+@mixin light {
+  color: $color-light-text;
+
+  h3,
+  h4 {
+    color: $color-white-text;
+  }
+}
+
+@mixin medium {
+  color: $color-medium-text;
+
+  a {
+    color: $color-dark-link-text;
+
+    &.active {
+      color: $color-medium-text;
+    }
+  }
+
+  h3,
+  h4 {
+    color: $color-dark-text;
+  }
+}
+
+@mixin dark {
+  color: $color-dark-text;
+
+  a {
+    color: $color-dark-link-text;
+
+    &.active {
+      color: $color-medium-text;
+    }
+  }
+}

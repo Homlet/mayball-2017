@@ -1,6 +1,7 @@
 #ents {
+  @include dark;
+
   background-color: $color-ents;
-  color: $color-dark-text;
 
   .cannon {
     background-image: url('../img/cannon.svg');

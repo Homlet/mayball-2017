@@ -33,12 +33,9 @@
 }
 
 #ticketing {
-  background-color: $color-ticketing;
-  color: $color-medium-text;
+  @include medium;
 
-  h3, h4 {
-    color: $color-dark-text;
-  }
+  background-color: $color-ticketing;
 
   .blurbs {
     @include column(2/5);

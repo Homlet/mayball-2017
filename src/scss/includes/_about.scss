@@ -1,6 +1,7 @@
 #about {
+  @include dark;
+
   background-color: $color-about;
-  color: $color-dark-text;
 
   .blurb {
     @include column(2/3);

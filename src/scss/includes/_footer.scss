@@ -1,3 +1,5 @@
 footer {
-  // TODO.
+  @include light;
+
+  background-color: $color-footer;
 }

@@ -1,0 +1,48 @@
+.accordion {
+  list-style: none;
+  padding: 0;
+}
+
+.accordion>li {
+  &>a {
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+    margin: .4rem 0;
+    padding: .8rem 0;
+    transition: border-color 600ms;
+    width: 100%;
+
+    &::before {
+      background-image: url('../img/expand.svg');
+      background-position: center center;
+      content: '';
+      display: block;
+      float: right;
+      height: 1.5rem;
+      margin: 0 .5rem;
+      width: 1rem;
+    }
+  }
+
+  &>div {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease-in-out;
+  }
+}
+
+.accordion>li.open {
+  &>a {
+    border-color: $color-white-text;
+
+    &::before {
+      background-image: url('../img/collapse.svg');
+    }
+  }
+
+  &>div {
+    max-height: 32rem;
+  }
+}

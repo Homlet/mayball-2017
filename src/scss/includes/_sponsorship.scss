@@ -1,6 +1,7 @@
 #sponsorship {
+  @include medium;
+
   background-color: $color-sponsorship;
-  color: $color-medium-text;
 
   .sponsors {
     align-items: center;
@@ -24,10 +25,5 @@
     @media (max-width: $media-width-medium) {
       flex-wrap: wrap;
     }
-  }
-
-  h3,
-  h4 {
-    color: $color-dark-text;
   }
 }
