@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ $1.htm [NC,L]
+RewriteCond %{REQUEST_FILENAME}.htm -f
+RewriteRule ^(.+)$ $1.htm [NC,L]
 
 RedirectMatch 404 /\.git
