@@ -2,6 +2,7 @@
   @include light;
 
   background-color: $color-committee;
+  padding-bottom: 2rem;
 
   .center {
     @include center(60rem);

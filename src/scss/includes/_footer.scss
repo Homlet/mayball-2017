@@ -2,4 +2,60 @@ footer {
   @include light;
 
   background-color: $color-footer;
+  padding-top: 0;
+
+  .center {
+    @include center(50rem);
+  }
+
+  .internal {
+    @include column(3/7);
+
+    text-align: right;
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+
+      text-align: center;
+    }
+
+    &::before {
+      content: 'Sitemap';
+    }
+  }
+
+  .crest {
+    @include column(1/7);
+
+    padding: 1rem 0;
+    text-align: center;
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .external {
+    @include column(3/7);
+
+    @media (max-width: $media-width-small) {
+      @include stack;
+
+      text-align: center;
+    }
+
+    &::before {
+      content: 'Official Links';
+    }
+  }
+
+  small {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
