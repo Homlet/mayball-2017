@@ -16,9 +16,9 @@
 
     img {
       @include scale(width, 75%, 1.2);
-      @include scale(height, 11rem * 7 / 6, .6);
 
       border: 2px solid $color-light-text;
+      margin-bottom: -1.2rem;
     }
 
     label {

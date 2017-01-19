@@ -13,14 +13,9 @@
 @import 'includes/footer';
 
 #workers {
-  color: $color-light-text;
+  @include light;
 
   padding-top: 2rem;
-
-  h3,
-  h4 {
-    color: $color-white-text;
-  }
 
   ul {
     list-style-position: outside;
@@ -34,5 +29,13 @@
 
   td:not(:first-child) {
     text-align: center;
+  }
+
+  .emphasis {
+    font-size: 1.2rem;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
   }
 }
