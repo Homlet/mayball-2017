@@ -4,26 +4,31 @@
   background-color: $color-sponsorship;
 
   .sponsors {
-    align-items: center;
     background: $color-sponsor-bar;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
     margin: 0 -2rem;
     padding: 1.5rem 2rem;
     width: 100%;
 
+    ul {
+      @extend %clearfix;
+    }
+
     li {
-      margin: 1rem;
-      max-width: 100%;
+      @include column(1/2);
+
+      @media (max-width: $media-width-medium) {
+        @include stack;
+
+        &:not(:first-child) {
+          border-top: solid 2px $color-dark-text;
+          margin-top: 1.5rem;
+          padding-top: 1rem;
+        }
+      }
     }
 
     img {
-      width: 100%;
-    }
-
-    @media (max-width: $media-width-medium) {
-      flex-wrap: wrap;
+      max-width: 100%;
     }
   }
 }
