@@ -120,13 +120,17 @@
             .addTo(controller);
     }
 
-    function initialize() {
+    function initialize_quick() {
         initialize_scrollmagic();
         initialize_parallax();
-        initialize_nav();
         initialize_animation();
     }
 
+    function initialize_slow() {
+      initialize_nav();
+    }
+
     // jQuery hooks.
-    $(window).load(initialize);
+    $(document).ready(initialize_quick);
+    $(window).load(initialize_slow);
 })();
