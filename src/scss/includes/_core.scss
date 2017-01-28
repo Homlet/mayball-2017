@@ -119,8 +119,16 @@ a {
   display: block;
   float: left;
   font-size: 2rem;
-  padding: 1.2rem;
   margin-left: 1rem;
+  padding: 1.2rem;
+}
+
+.emphasis {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
 }
 
 %clearfix {
