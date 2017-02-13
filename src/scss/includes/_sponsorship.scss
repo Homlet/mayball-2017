@@ -16,6 +16,12 @@
     li {
       @include column(1/2);
 
+      @media (min-width: $media-width-medium) {
+        div {
+          text-align: center;
+        }
+      }
+
       @media (max-width: $media-width-medium) {
         @include stack;
 
