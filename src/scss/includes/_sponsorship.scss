@@ -14,18 +14,11 @@
     }
 
     li {
-      @media not all and (max-width: $media-width-xlarge) {
-        @include span(.245);
-      }
-
-      @media (max-width: $media-width-xlarge) {
-        @include span(.49);
-      }
+      @include span(0.33);
 
       @media not all and (max-width: $media-width-medium) {
         border: solid 1px transparent;
         height: 7rem;
-
         &:hover {
           border-left: solid 1px $color-dark-text;
           border-right: solid 1px $color-dark-text;
@@ -40,7 +33,7 @@
             border-left: solid 1px $color-dark-text;
             border-right: solid 1px $color-dark-text;
             margin: -1px;
-            max-height: 50rem;
+            max-height: 75rem;
             transition: max-height 750ms;
           }
         }
