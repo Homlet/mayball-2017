@@ -1,6 +1,10 @@
 // Device width boundaries:
 // ^
+// | large desktop
+$media-width-xlarge: 100rem;
+// ^
 // | desktop
+// V
 $media-width-large: 64rem;
 // ^
 // | large
